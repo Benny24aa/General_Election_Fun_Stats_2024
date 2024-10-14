@@ -71,4 +71,8 @@ north_east_this_time_final_seat_count <- north_east_this_time %>%
 
  Final_Seat_Count_North_East_Compare <- full_join(north_east_last_time_final_seat_count, north_east_this_time_final_seat_count, by = "Winning_Party")
 
-  
+ general_election_north_east_data_prediction <- general_election_data_set %>% 
+   filter(Region.name == "North East") %>% 
+   select(ONS.ID, ONS.region.ID, Constituency.name, Region.name, Country.name, Constituency.type, Electorate)
+ 
+ general_election_north_east_data_prediction <- full_join(general_election_north_east_data_prediction, Calculation_decides_winner_north_east, by = "Constituency.name" )
