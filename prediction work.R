@@ -76,3 +76,5 @@ north_east_this_time_final_seat_count <- north_east_this_time %>%
    select(ONS.ID, ONS.region.ID, Constituency.name, Region.name, Country.name, Constituency.type, Electorate)
  
  general_election_north_east_data_prediction <- full_join(general_election_north_east_data_prediction, Calculation_decides_winner_north_east, by = "Constituency.name" )
+ 
+ write_xlsx(general_election_north_east_data_prediction, "C:/Users/harle/OneDrive/Desktop/election analysis 2024/General_Election_Fun_Stats_2024/test.xlsx")
