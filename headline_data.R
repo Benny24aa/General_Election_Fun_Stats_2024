@@ -130,8 +130,18 @@ pc_final_vote_Share <-general_election_data_set %>%
   rename(Total_Votes = PC) %>% 
   mutate(Party_Name = "PC")
 
+# Merging votes together using bind_rows 
+
 party_vote_share_added <- bind_rows(pc_final_vote_Share,SNP_final_vote_Share, green_final_vote_Share, libdem_final_vote_Share, reform_final_vote_Share, conservative_final_vote_Share, labour_final_vote_share )
 
 rm(pc_final_vote_Share,SNP_final_vote_Share, green_final_vote_Share, libdem_final_vote_Share, reform_final_vote_Share, conservative_final_vote_Share, labour_final_vote_share)
 
+# Preparing data for ratio calculation of seat to vote share
+
 general_election_result <- left_join(general_election_result, party_vote_share_added, by = "Party_Name")
+
+rm(party_vote_share_added)
+
+general_election_result <- general_election_result %>% 
+  mutate(Number_Seat_Vote_Share = round(Total_Votes/Number_of_Seats)) %>% 
+  mutate(Percentage_of_Vote = signif(Total_Votes/28809340 * 100, digits = 3))
