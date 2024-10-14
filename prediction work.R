@@ -75,6 +75,26 @@ north_east_this_time_final_seat_count <- north_east_this_time %>%
    filter(Region.name == "North East") %>% 
    select(ONS.ID, ONS.region.ID, Constituency.name, Region.name, Country.name, Constituency.type, Electorate)
  
- general_election_north_east_data_prediction <- full_join(general_election_north_east_data_prediction, Calculation_decides_winner_north_east, by = "Constituency.name" )
+ general_election_north_east_data_prediction_complete <- full_join(general_election_north_east_data_prediction, Calculation_decides_winner_north_east, by = "Constituency.name" )
  
- write_xlsx(general_election_north_east_data_prediction, "C:/Users/harle/OneDrive/Desktop/election analysis 2024/General_Election_Fun_Stats_2024/test.xlsx")
+ #### Calculating Majorities
+ 
+ general_election_north_east_reform_labour_majority_calculation <- general_election_north_east_data_prediction_complete %>% 
+   filter(Winning_Party == 'RUK', Second_Party == 'Lab') %>% 
+   mutate(Majority = RUK - Lab)
+ 
+ general_election_north_east_labour_reform_majority_calculation <- general_election_north_east_data_prediction_complete %>% 
+   filter(Winning_Party == 'Lab', Second_Party == 'RUK') %>% 
+   mutate(Majority = Lab - RUK)
+ 
+ general_election_north_east_conservative_labour_majority_calculation <- general_election_north_east_data_prediction_complete %>% 
+   filter(Winning_Party == 'Con', Second_Party == 'Lab') %>% 
+   mutate(Majority = Con - Lab)
+ 
+ general_election_north_east_conservative_reform_majority_calculation <- general_election_north_east_data_prediction_complete %>% 
+   filter(Winning_Party == 'Con', Second_Party == 'RUK') %>% 
+   mutate(Majority = Con - RUK)
+ 
+ general_election_north_east_data_prediction_complete <- bind_rows(general_election_north_east_reform_labour_majority_calculation,general_election_north_east_labour_reform_majority_calculation,general_election_north_east_conservative_labour_majority_calculation,general_election_north_east_conservative_reform_majority_calculation )
+ 
+ 
