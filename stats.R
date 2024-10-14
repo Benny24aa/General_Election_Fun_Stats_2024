@@ -51,7 +51,8 @@ general_election_result <- general_election_data_set  %>%
 group_by(First.party) %>% 
   summarise(count=n(), .groups = 'drop') %>% 
   rename(Number_of_Seats = count) %>% 
-  filter(First.party != 'Spk', First.party != "Ind")
+  filter(First.party != 'Spk', First.party != "Ind") %>% 
+  rename(Party_Name = First.party)
 
 # Total Number of Votes across all seats
 general_election_total_electorate <- general_election_data_set %>% 
@@ -130,3 +131,7 @@ pc_final_vote_Share <-general_election_data_set %>%
   mutate(Party_Name = "PC")
 
 party_vote_share_added <- bind_rows(pc_final_vote_Share,SNP_final_vote_Share, green_final_vote_Share, libdem_final_vote_Share, reform_final_vote_Share, conservative_final_vote_Share, labour_final_vote_share )
+
+rm(pc_final_vote_Share,SNP_final_vote_Share, green_final_vote_Share, libdem_final_vote_Share, reform_final_vote_Share, conservative_final_vote_Share, labour_final_vote_share)
+
+general_election_result <- left_join(general_election_result, party_vote_share_added, by = "Party_Name")
