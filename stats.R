@@ -51,6 +51,82 @@ general_election_result <- general_election_data_set  %>%
 group_by(First.party) %>% 
   summarise(count=n(), .groups = 'drop') %>% 
   rename(Number_of_Seats = count) %>% 
-  filter(First.party != 'Spk')
+  filter(First.party != 'Spk', First.party != "Ind")
+
+# Total Number of Votes across all seats
+general_election_total_electorate <- general_election_data_set %>% 
+  mutate(UK = "UK") %>% 
+  group_by(UK) %>%  
+  summarise(Valid.votes = sum(Valid.votes), .groups = 'drop') %>% 
+  select(-UK)
 
 
+# Total Labour Vote Share
+labour_final_vote_share <- general_election_data_set %>% 
+  mutate(UK = "UK") %>% 
+group_by(UK) %>% 
+  summarise(Lab = sum(Lab), .groups = 'drop') %>% 
+  select(-UK)%>% 
+  rename(Total_Votes = Lab) %>% 
+  mutate(Party_Name = "Lab")
+  
+
+# Total Conservative Vote Share
+conservative_final_vote_Share <-general_election_data_set %>% 
+  mutate(UK = "UK") %>% 
+  group_by(UK) %>% 
+  summarise(Con = sum(Con), .groups = 'drop') %>% 
+  select(-UK)%>% 
+  rename(Total_Votes = Con) %>% 
+  mutate(Party_Name = "Con")
+
+# Total Reform UK Vote Share
+reform_final_vote_Share <-general_election_data_set %>% 
+  mutate(UK = "UK") %>% 
+  group_by(UK) %>% 
+  summarise(RUK = sum(RUK), .groups = 'drop') %>% 
+  select(-UK) %>% 
+  rename(Total_Votes = RUK) %>% 
+  mutate(Party_Name = "RUK")
+
+# Total Liberal Democrat Vote Share
+
+libdem_final_vote_Share <-general_election_data_set %>% 
+  mutate(UK = "UK") %>% 
+  group_by(UK) %>% 
+  summarise(LD = sum(LD), .groups = 'drop') %>% 
+  select(-UK) %>% 
+  rename(Total_Votes = LD) %>% 
+  mutate(Party_Name = "LD")
+
+
+# Total Green Party Vote Share
+green_final_vote_Share <-general_election_data_set %>% 
+  mutate(UK = "UK") %>% 
+  group_by(UK) %>% 
+  summarise(Green = sum(Green), .groups = 'drop') %>% 
+  select(-UK) %>% 
+  rename(Total_Votes = Green) %>% 
+  mutate(Party_Name = "Green")
+
+
+# Total SNP Vote Share
+SNP_final_vote_Share <-general_election_data_set %>% 
+  mutate(UK = "UK") %>% 
+  group_by(UK) %>% 
+  summarise(SNP = sum(SNP), .groups = 'drop') %>% 
+  select(-UK) %>% 
+  rename(Total_Votes = SNP) %>% 
+  mutate(Party_Name = "SNP")
+
+# Total Vote Share PC (Wales)
+
+pc_final_vote_Share <-general_election_data_set %>% 
+  mutate(UK = "UK") %>% 
+  group_by(UK) %>% 
+  summarise(PC = sum(PC), .groups = 'drop') %>% 
+  select(-UK) %>% 
+  rename(Total_Votes = PC) %>% 
+  mutate(Party_Name = "PC")
+
+party_vote_share_added <- bind_rows(pc_final_vote_Share,SNP_final_vote_Share, green_final_vote_Share, libdem_final_vote_Share, reform_final_vote_Share, conservative_final_vote_Share, labour_final_vote_share )
