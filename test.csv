@@ -1,0 +1,28 @@
+ONS.ID,ONS.region.ID,Constituency.name,Region.name,Country.name,Constituency.type,Electorate,Lab,RUK,Con,Winning_Party,Second_Party,Third_Party
+E14001101,E12000001,Bishop Auckland,North East,England,County,70745,12818,15325,12102,RUK,Lab,Con
+E14001106,E12000001,Blaydon and Consett,North East,England,County,70487,17075,16644,8021,Lab,RUK,Con
+E14001107,E12000001,Blyth and Ashington,North East,England,County,76595,15760,17247,7997,RUK,Lab,Con
+E14001173,E12000001,City of Durham,North East,England,County,70583,15667,13539,7148,Lab,RUK,Con
+E14001183,E12000001,Cramlington and Killingworth,North East,England,County,76228,18162,16412,10645,Lab,RUK,Con
+E14001190,E12000001,Darlington,North East,England,County,70672,12734,12738,16115,Con,RUK,Lab
+E14001211,E12000001,Easington,North East,England,County,69395,12789,15835,5452,RUK,Lab,Con
+E14001244,E12000001,Gateshead Central and Whickham,North East,England,Borough,69827,14546,14554,6465,RUK,Lab,Con
+E14001272,E12000001,Hartlepool,North East,England,County,71437,12524,14360,9490,RUK,Lab,Con
+E14001285,E12000001,Hexham,North East,England,County,76431,21252,7686,22714,Con,Lab,RUK
+E14001295,E12000001,Houghton and Sunderland South,North East,England,County,78448,14424,17778,7294,RUK,Lab,Con
+E14001307,E12000001,Jarrow and Gateshead East,North East,England,Borough,70272,14961,15941,5189,RUK,Lab,Con
+E14001367,E12000001,Middlesbrough and Thornaby East,North East,England,Borough,75123,12806,12604,7937,Lab,RUK,Con
+E14001368,E12000001,Middlesbrough South and East Cleveland,North East,England,County,70331,13980,5911,18242,Con,Lab,RUK
+E14001377,E12000001,Newcastle upon Tyne Central and West,North East,England,Borough,76822,15379,13894,6126,Lab,RUK,Con
+E14001378,E12000001,Newcastle upon Tyne East and Wallsend,North East,England,Borough,76245,17607,14953,5543,Lab,RUK,Con
+E14001379,E12000001,Newcastle upon Tyne North,North East,England,Borough,74768,21192,13310,8966,Lab,RUK,Con
+E14001382,E12000001,Newton Aycliffe and Spennymoor,North East,England,County,72215,14287,15648,10012,RUK,Lab,Con
+E14001389,E12000001,North Durham,North East,England,County,73226,12298,16327,8165,RUK,Lab,Con
+E14001397,E12000001,North Northumberland,North East,England,County,74190,13876,13800,14629,Con,Lab,RUK
+E14001440,E12000001,Redcar,North East,England,Borough,70241,11824,12832,14063,Con,RUK,Lab
+E14001492,E12000001,South Shields,North East,England,Borough,68366,11476,13720,5781,RUK,Lab,Con
+E14001518,E12000001,Stockton North,North East,England,County,70242,13111,14998,9780,RUK,Lab,Con
+E14001519,E12000001,Stockton West,North East,England,County,71868,13996,13255,22261,Con,Lab,RUK
+E14001531,E12000001,Sunderland Central,North East,England,Borough,76145,12612,16458,7419,RUK,Lab,Con
+E14001557,E12000001,Tynemouth,North East,England,Borough,73194,20796,14851,11284,Lab,RUK,Con
+E14001567,E12000001,Washington and Gateshead South,North East,England,Borough,70972,13520,16599,6392,RUK,Lab,Con
