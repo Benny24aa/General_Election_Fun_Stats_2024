@@ -46,3 +46,29 @@ Calculation_decides_winner_north_east <- breakdown_constituency_north_east %>%
                      
            )) %>% 
   select(-reformoverlab, -reformovercon, -conoverlab)
+
+north_east_last_time <- general_election_north_east_data %>% 
+  select(Constituency.name, First.party ) %>% 
+  rename(Winning_Party = First.party)
+
+north_east_this_time <- Calculation_decides_winner_north_east %>% 
+  select(Constituency.name, Winning_Party) %>% 
+  rename(Winning_Party_Predict = Winning_Party)
+
+merged_north_east_first_place <- full_join(north_east_last_time, north_east_this_time, by = "Constituency.name")
+
+
+north_east_last_time_final_seat_count <-  north_east_last_time %>% 
+  group_by(Winning_Party) %>% 
+  summarise(count=n(), .groups = 'drop') %>% 
+  rename(Number_of_Seats = count)
+
+north_east_this_time_final_seat_count <- north_east_this_time %>% 
+  group_by(Winning_Party_Predict) %>% 
+  summarise(count=n(), .groups = 'drop') %>%
+  rename(Winning_Party = Winning_Party_Predict) %>% 
+  rename(Number_of_Seats_This_Time = count)
+
+ Final_Seat_Count_North_East_Compare <- full_join(north_east_last_time_final_seat_count, north_east_this_time_final_seat_count, by = "Winning_Party")
+
+  
